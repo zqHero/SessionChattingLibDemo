@@ -1,1 +1,1 @@
-include ':app', ':sessionlib'
+include ':app', ':messageListLib', ':emotionboardlib'
