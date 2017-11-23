@@ -4,11 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.hero.zhaoq.sessionlibdemo.MainActivity">
+    tools:context="com.hero.zhaoq.sessionlibdemo.EmotionsActivity">
 
     <include layout="@layout/title_bar_layout" />
 
-    <com.hero.zhaoq.emotionboardlib.XhsEmoticonsKeyBoard
+    <com.hero.zhaoq.emotionboardlib.EmoticonsInputBoard
         android:id="@+id/ek_bar"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -30,6 +30,6 @@
             android:smoothScrollbar="true"
             android:transcriptMode="normal" />
 
-    </com.hero.zhaoq.emotionboardlib.XhsEmoticonsKeyBoard>
+    </com.hero.zhaoq.emotionboardlib.EmoticonsInputBoard>
 
 </LinearLayout>

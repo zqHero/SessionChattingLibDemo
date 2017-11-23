@@ -2,9 +2,7 @@ package com.hero.zhaoq.emotionboardlib.utils;
 
 import android.content.Context;
 import android.text.TextUtils;
-import android.util.Log;
 
-import com.hero.zhaoq.emotionboardlib.R;
 import com.hero.zhaoq.emotionboardlib.entity.EmoticonEntity;
 import com.hero.zhaoq.emotionboardlib.entity.EmoticonPageSetEntity;
 
@@ -78,7 +76,7 @@ public class ParseDataUtils {
     public static ArrayList<EmoticonEntity> parseKaomojiData(Context context) {
         ArrayList<EmoticonEntity> textEmotionArray = new ArrayList<>();
         try {
-            InputStreamReader inputStreamReader = new InputStreamReader(context.getAssets().open("kaomoji"));
+            InputStreamReader inputStreamReader = new InputStreamReader(context.getAssets().open("textEmotion"));
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
             String line;
             while ((line = bufferedReader.readLine()) != null) {

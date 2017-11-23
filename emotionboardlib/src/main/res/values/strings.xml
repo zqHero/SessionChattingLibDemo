@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">emotionBoardLib</string>
+
+
+    <string name="premission_no_defined_toast">权限不被允许</string>
+    <string name="picture_not_found_toast">图片找不到</string>
+    <string name="user_already_exist_toast">用户已经存在</string>
+
+
 </resources>

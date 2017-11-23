@@ -15,7 +15,6 @@ import java.util.ArrayList;
  * date:2017/11/21 / 11:15
  * zhaoqiang:zhaoq_hero@163.com
  */
-
 public class PageSetAdapter extends PagerAdapter {
 
     private final ArrayList<PageSetEntity> mPageSetEntityList = new ArrayList<>();

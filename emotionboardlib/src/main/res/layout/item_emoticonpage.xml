@@ -13,5 +13,4 @@
         android:layout_marginRight="10dp"
         android:listSelector="@android:color/transparent" />
 
-
 </RelativeLayout>

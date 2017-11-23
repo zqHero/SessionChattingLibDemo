@@ -11,7 +11,7 @@
         android:layout_weight="1"
         android:background="@color/white"
         android:gravity="center"
-        android:text="hero"
+        android:text="a simple chatting view"
         android:textSize="@dimen/title_bar_txt_size"
         android:textColor="#333333"
         />

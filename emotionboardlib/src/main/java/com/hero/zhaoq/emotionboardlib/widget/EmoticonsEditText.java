@@ -5,10 +5,7 @@ import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.widget.TextView;
 
-import com.hero.zhaoq.emotionboardlib.interfce.EmoticonFilter;
-
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * author: zhaoqiang
@@ -18,7 +15,6 @@ import java.util.List;
 
 public class EmoticonsEditText extends RichEditText {
 
-    private List<EmoticonFilter> mFilterList;
 
     public EmoticonsEditText(Context context) {
         this(context, null);
@@ -72,25 +68,7 @@ public class EmoticonsEditText extends RichEditText {
     @Override
     protected final void onTextChanged(CharSequence arg0, int start, int lengthBefore, int after) {
         super.onTextChanged(arg0, start, lengthBefore, after);
-        if(mFilterList == null){
-            return;
-        }
-        for(EmoticonFilter emoticonFilter : mFilterList) {
-            emoticonFilter.filter(this, arg0, start, lengthBefore, after);
-        }
-    }
 
-    public void addEmoticonFilter(EmoticonFilter emoticonFilter){
-        if(mFilterList == null){
-            mFilterList = new ArrayList<>();
-        }
-        mFilterList.add(emoticonFilter);
-    }
-
-    public void removedEmoticonFilter(EmoticonFilter emoticonFilter){
-        if(mFilterList != null && mFilterList.contains(emoticonFilter)){
-            mFilterList.remove(emoticonFilter);
-        }
     }
 
     @Override

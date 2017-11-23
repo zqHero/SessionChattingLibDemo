@@ -277,6 +277,7 @@ public class RecordVoiceButton extends android.support.v7.widget.AppCompatButton
                         duration = 60;
                     }
                     //TODO   发送  语音消息：
+                    Toast.makeText(mContext,"发送语音消息",Toast.LENGTH_SHORT).show();
 //                    try {
 //                        VoiceContent content = new VoiceContent(myRecAudioFile, duration);
 //                        Message msg = mConv.createSendMessage(content);
@@ -393,10 +394,8 @@ public class RecordVoiceButton extends android.support.v7.widget.AppCompatButton
             recorder = null;
         }
 
-
         mThread = new ObtainDecibelThread();
         mThread.start();
-
     }
 
     //停止录音，隐藏录音动画

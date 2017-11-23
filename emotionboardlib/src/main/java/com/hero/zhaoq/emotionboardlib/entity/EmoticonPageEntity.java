@@ -3,7 +3,7 @@ package com.hero.zhaoq.emotionboardlib.entity;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.hero.zhaoq.emotionboardlib.widget.EmoticonPageView;
+import com.hero.zhaoq.emotionboardlib.widget.EmotionItemPageView;
 
 import java.util.List;
 
@@ -81,7 +81,7 @@ public class EmoticonPageEntity<T> extends PageEntity<EmoticonPageEntity> {
             return mPageViewInstantiateListener.instantiateItem(container, position, this);
         }
         if (getRootView() == null) {
-            EmoticonPageView pageView = new EmoticonPageView(container.getContext());
+            EmotionItemPageView pageView = new EmotionItemPageView(container.getContext());
             pageView.setNumColumns(mRow);
             setRootView(pageView);
         }
