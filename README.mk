@@ -12,9 +12,9 @@
 
 ####<font color="#0f099">二，献上效果图：</font>
 
-![这里写图片描述](http://img.blog.csdn.net/20171124181717099?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzIzMzA5Nw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![这里写图片描述](https://github.com/zqHero/SessionChattingLibDemo/tree/master/img/1.gif)
 
-![这里写图片描述](http://img.blog.csdn.net/20171124181859503?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzIzMzA5Nw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![这里写图片描述](https://github.com/zqHero/SessionChattingLibDemo/tree/master/img/2.gif)
 ####<font color="#0f099">三，代码介绍：</font>
 
 	说实话 网上的这种库简直时太多，本人也是在网上找了很多代码，最后在找到感觉还不错的几个库。改了改源码。相比原来的库更加简单优化。如果有童鞋对此有兴趣，可以继续往下看，否则请忽略。
@@ -116,7 +116,8 @@
 
 表情图片以及表情符号，都是一些资源文件：博主对他们进行了压缩。减少了包的大小。
 
-![这里写图片描述](http://img.blog.csdn.net/20171124181659368?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzIzMzA5Nw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![这里写图片描述](https://github.com/zqHero/SessionChattingLibDemo/tree/master/img/3.gif)
+
 
 博主的表情包相对较多。当然如果对你无用你可以直接找到工具类EmotionsPageManager注释如下代码即可：
 
@@ -175,21 +176,3 @@ https://github.com/zqHero/SessionChattingLibDemo
 
 
 
-
-//下面   介绍网上的 几个开源库    博主 也是参考了下面的库：
-// 当然如果对你有帮助  希望能fork一下喽：
-
-
-XhsEmoticonsKeyboard:
-
-https://github.com/w446108264/XhsEmoticonsKeyboard
-
-![这里写图片描述](http://img.blog.csdn.net/20171124182202954?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzIzMzA5Nw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
-
-![这里写图片描述](http://img.blog.csdn.net/20171124182212942?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzIzMzA5Nw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
-
-LQREmojiLibrary：
-
-https://github.com/GitLqr/LQREmojiLibrary
-
-![这里写图片描述](http://img.blog.csdn.net/20171124182512862?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzIzMzA5Nw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
