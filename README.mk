@@ -170,3 +170,5 @@
 <font color="#f00">当然如果对你有用希望动动你的小手fork 或者关注博主一下。下面奉上代码源地址：</font>
 
 https://github.com/zqHero/SessionChattingLibDemo
+
+csdn:http://blog.csdn.net/u013233097/article/details/78626708
