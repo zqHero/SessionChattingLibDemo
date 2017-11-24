@@ -12,9 +12,9 @@
 
 ####<font color="#0f099">二，献上效果图：</font>
 
-![这里写图片描述](https://github.com/zqHero/SessionChattingLibDemo/tree/master/img/1.gif)
+![这里写图片描述](https://raw.githubusercontent.com/zqHero/SessionChattingLibDemo/master/img/1.gif)
 
-![这里写图片描述](https://github.com/zqHero/SessionChattingLibDemo/tree/master/img/2.gif)
+![这里写图片描述](https://raw.githubusercontent.com/zqHero/SessionChattingLibDemo/master/img/2.gif)
 ####<font color="#0f099">三，代码介绍：</font>
 
 	说实话 网上的这种库简直时太多，本人也是在网上找了很多代码，最后在找到感觉还不错的几个库。改了改源码。相比原来的库更加简单优化。如果有童鞋对此有兴趣，可以继续往下看，否则请忽略。
@@ -116,7 +116,7 @@
 
 表情图片以及表情符号，都是一些资源文件：博主对他们进行了压缩。减少了包的大小。
 
-![这里写图片描述](https://github.com/zqHero/SessionChattingLibDemo/tree/master/img/3.gif)
+![这里写图片描述](https://raw.githubusercontent.com/zqHero/SessionChattingLibDemo/master/img/3.gif)
 
 
 博主的表情包相对较多。当然如果对你无用你可以直接找到工具类EmotionsPageManager注释如下代码即可：
