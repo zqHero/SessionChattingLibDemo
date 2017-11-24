@@ -118,6 +118,8 @@ public class EmotionsActivity extends AppCompatActivity implements EmoticonsPage
 
     }
 
+
+
     @Override
     public void OnFuncClose() {
 
