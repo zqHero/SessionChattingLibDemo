@@ -1,8 +1,6 @@
 package com.hero.zhaoq.emotionboardlib.adapter;
 
 import android.content.Context;
-import android.net.wifi.WifiManager;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -16,7 +14,6 @@ import com.hero.zhaoq.emotionboardlib.entity.EmoticonPageBean;
 import com.hero.zhaoq.emotionboardlib.interfce.EmoticonClickListener;
 import com.hero.zhaoq.emotionboardlib.utils.ImageLoader;
 
-import java.io.File;
 import java.io.IOException;
 
 /**
