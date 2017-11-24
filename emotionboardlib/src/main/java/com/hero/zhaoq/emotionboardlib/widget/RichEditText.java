@@ -39,6 +39,7 @@ import java.util.regex.Pattern;
  *
  */
 public class RichEditText extends android.support.v7.widget.AppCompatEditText {
+
     public static final String MATCH_MENTION = "@([^@^\\s^:^,^;^'，'^'；'^>^<]{1,})";//@([^@^\\s^:]{1,})([\\s\\:\\,\\;]{0,1})");//@.+?[\\s:]
     public static final String MATCH_TOPIC = "#.+?#";
     public static boolean DEBUG = false;

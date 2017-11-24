@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.felipecsl.gifimageview.library.GifImageView;
 import com.hero.zhaoq.emotionboardlib.R;
 import com.hero.zhaoq.emotionboardlib.entity.EmoticonPageBean;
 import com.hero.zhaoq.emotionboardlib.interfce.EmoticonClickListener;

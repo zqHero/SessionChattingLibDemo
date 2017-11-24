@@ -8,19 +8,18 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.hero.zhaoq.emotionboardlib.Constants;
-import com.hero.zhaoq.emotionboardlib.EmoticonsInputBoard;
+import com.hero.zhaoq.emotionboardlib.widget.EmoticonsInputBoard;
 import com.hero.zhaoq.emotionboardlib.entity.EmoticonBean;
 import com.hero.zhaoq.emotionboardlib.interfce.EmoticonClickListener;
 import com.hero.zhaoq.emotionboardlib.EmotionsPageManager;
 import com.hero.zhaoq.emotionboardlib.widget.EmoticonsEditText;
-import com.hero.zhaoq.emotionboardlib.widget.FuncLayout;
+import com.hero.zhaoq.emotionboardlib.widget.EmoticonsPageLayout;
 import com.hero.zhaoq.emotionboardlib.widget.SimpleAppsGridView;
-import com.sj.emoji.EmojiBean;
 
 /**
  * 一款  简单的聊天  会话界面
  */
-public class EmotionsActivity extends AppCompatActivity implements FuncLayout.OnFuncKeyBoardListener {
+public class EmotionsActivity extends AppCompatActivity implements EmoticonsPageLayout.OnFuncKeyBoardListener {
 
     private EmoticonsInputBoard ekBar;
 
@@ -41,7 +40,6 @@ public class EmotionsActivity extends AppCompatActivity implements FuncLayout.On
         emoticonClickListener = new EmoticonClickListener() {
             @Override
             public void onEmoticonClick(Object o, int actionType, boolean isDelBtn) {
-
                 if (isDelBtn) {
                     EmotionsPageManager.delClick(ekBar.getEtChat());
                 } else {
@@ -50,18 +48,14 @@ public class EmotionsActivity extends AppCompatActivity implements FuncLayout.On
                     }
                     if (actionType == Constants.EMOTICON_CLICK_IMAGE) {
                         if (o instanceof EmoticonBean) {
-                            //TODO  SendImage
-                            Toast.makeText(EmotionsActivity.this, "图片:" + ((EmoticonBean)o).getContent(),
+                            Toast.makeText(EmotionsActivity.this, "图片:" + o.toString(),
                                     Toast.LENGTH_SHORT).show();
                         }
                     } else {
                         String content = null;
-                        if (o instanceof EmojiBean) {
-                            content = ((EmojiBean) o).emoji;
-                        } else if (o instanceof EmoticonBean) {
+                        if (o instanceof EmoticonBean) {
                             content = ((EmoticonBean) o).getContent();
                         }
-
                         if (TextUtils.isEmpty(content)) {
                             return;
                         }
@@ -98,7 +92,6 @@ public class EmotionsActivity extends AppCompatActivity implements FuncLayout.On
                 if (mcgContent.equals("")) {
                     return;
                 }
-
                 Toast.makeText(getApplicationContext(), "发送消息", Toast.LENGTH_SHORT).show();
             }
         });
@@ -108,8 +101,8 @@ public class EmotionsActivity extends AppCompatActivity implements FuncLayout.On
             public void onClick(View v) {
                 int i = v.getId();
                 if (i == R.id.btn_voice_or_text) {
+                    //切换
                     ekBar.setVideoText();
-                    //语音  输入：
                 }
             }
         });

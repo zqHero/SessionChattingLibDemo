@@ -56,34 +56,18 @@ public class EmoticonsToolBarView extends RelativeLayout {
         }
     }
 
-    public void addFixedToolItemView(View view, boolean isRight) {
-        LayoutParams params = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
-        LayoutParams hsvParams = (LayoutParams) hsv_toolbar.getLayoutParams();
-        if (view.getId() <= 0) {
-            view.setId(isRight ? R.id.id_toolbar_right : R.id.id_toolbar_left);
-        }
-        if (isRight) {
-            params.addRule(ALIGN_PARENT_RIGHT);
-            hsvParams.addRule(LEFT_OF, view.getId());
-        } else {
-            params.addRule(ALIGN_PARENT_LEFT);
-            hsvParams.addRule(RIGHT_OF, view.getId());
-        }
-        addView(view, params);
-        hsv_toolbar.setLayoutParams(hsvParams);
-    }
-
     protected View getCommonItemToolBtn() {
         return mInflater == null ? null : mInflater.inflate(R.layout.item_toolbtn, null);
     }
 
+    /**
+     * 初始化  item
+     */
     protected void initItemToolBtn(View toolBtnView, int rec, final PageSetEntity pageSetEntity, OnClickListener onClickListener) {
         ImageView iv_icon = toolBtnView.findViewById(R.id.iv_icon);
-
         if (rec > 0) {
             iv_icon.setImageResource(rec);
         }
-
         LinearLayout.LayoutParams imgParams = new LinearLayout.LayoutParams(mBtnWidth, LayoutParams.MATCH_PARENT);
         iv_icon.setLayoutParams(imgParams);
         if (pageSetEntity != null) {
@@ -104,44 +88,21 @@ public class EmoticonsToolBarView extends RelativeLayout {
         });
     }
 
-    protected View getToolBgBtn(View parentView) {
-        return parentView.findViewById(R.id.iv_icon);
-    }
-
-    public void addFixedToolItemView(boolean isRight, int rec, final PageSetEntity pageSetEntity, OnClickListener onClickListener) {
-        View toolBtnView = getCommonItemToolBtn();
-        LayoutParams params = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
-        LayoutParams hsvParams = (LayoutParams) hsv_toolbar.getLayoutParams();
-        if (toolBtnView.getId() <= 0) {
-            toolBtnView.setId(isRight ? R.id.id_toolbar_right : R.id.id_toolbar_left);
-        }
-        if (isRight) {
-            params.addRule(ALIGN_PARENT_RIGHT);
-            hsvParams.addRule(LEFT_OF, toolBtnView.getId());
-        } else {
-            params.addRule(ALIGN_PARENT_LEFT);
-            hsvParams.addRule(RIGHT_OF, toolBtnView.getId());
-        }
-        addView(toolBtnView, params);
-        hsv_toolbar.setLayoutParams(hsvParams);
-        initItemToolBtn(toolBtnView, rec, pageSetEntity, onClickListener);
-    }
-
     public void addToolItemView(PageSetEntity pageSetEntity) {
         addToolItemView(0, pageSetEntity, null);
-    }
-
-    public void addToolItemView(int rec, OnClickListener onClickListener) {
-        addToolItemView(rec, null, onClickListener);
     }
 
     public void addToolItemView(int rec, final PageSetEntity pageSetEntity, OnClickListener onClickListener) {
         View toolBtnView = getCommonItemToolBtn();
         initItemToolBtn(toolBtnView, rec, pageSetEntity, onClickListener);
         ly_tool.addView(toolBtnView);
-        mToolBtnList.add(getToolBgBtn(toolBtnView));
+        mToolBtnList.add(toolBtnView.findViewById(R.id.iv_icon));
     }
 
+    /**
+     * 选中  设置：
+     * @param uuid
+     */
     public void setToolBtnSelect(String uuid) {
         if (TextUtils.isEmpty(uuid)) {
             return;
@@ -150,10 +111,10 @@ public class EmoticonsToolBarView extends RelativeLayout {
         for (int i = 0; i < mToolBtnList.size(); i++) {
             Object object = mToolBtnList.get(i).getTag(R.id.id_tag_pageset);
             if (object != null && object instanceof PageSetEntity && uuid.equals(((PageSetEntity) object).getUuid())) {
-                mToolBtnList.get(i).setBackgroundColor(getResources().getColor(R.color.toolbar_btn_select));
+                mToolBtnList.get(i).setBackgroundColor(getResources().getColor(R.color.select_item_bar_color));
                 select = i;
             } else {
-                mToolBtnList.get(i).setBackgroundResource(R.drawable.btn_toolbtn_bg);
+                mToolBtnList.get(i).setBackgroundResource(R.color.white);
             }
         }
         scrollToBtnPosition(select);
@@ -186,10 +147,6 @@ public class EmoticonsToolBarView extends RelativeLayout {
                 }
             });
         }
-    }
-
-    public void setBtnWidth(int width) {
-        mBtnWidth = width;
     }
 
     protected OnToolBarItemClickListener mItemClickListeners;

@@ -9,8 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
+import com.hero.zhaoq.emotionboardlib.EmoticonsInputBoardUtils;
 import com.hero.zhaoq.emotionboardlib.R;
-import com.hero.zhaoq.emotionboardlib.utils.EmoticonsKeyboardUtils;
 
 /**
  * author: zhaoqiang
@@ -30,7 +30,7 @@ public abstract class AutoHeightLayout extends SoftKeyboardSizeWatchLayout imple
     public AutoHeightLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.mContext = context;
-        mSoftKeyboardHeight = EmoticonsKeyboardUtils.getDefKeyboardHeight(mContext);
+        mSoftKeyboardHeight = EmoticonsInputBoardUtils.getDefKeyboardHeight(mContext);
         addOnResizeListener(this);
     }
 
@@ -108,7 +108,7 @@ public abstract class AutoHeightLayout extends SoftKeyboardSizeWatchLayout imple
     public void OnSoftPop(final int height) {
         if (mSoftKeyboardHeight != height) {
             mSoftKeyboardHeight = height;
-            EmoticonsKeyboardUtils.setDefKeyboardHeight(mContext, mSoftKeyboardHeight);
+            EmoticonsInputBoardUtils.setDefKeyboardHeight(mContext, mSoftKeyboardHeight);
             onSoftKeyboardHeightChanged(mSoftKeyboardHeight);
         }
     }

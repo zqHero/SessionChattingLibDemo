@@ -8,7 +8,7 @@
 
     <include layout="@layout/title_bar_layout" />
 
-    <com.hero.zhaoq.emotionboardlib.EmoticonsInputBoard
+    <com.hero.zhaoq.emotionboardlib.widget.EmoticonsInputBoard
         android:id="@+id/ek_bar"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -19,7 +19,6 @@
             android:id="@+id/lv_chat"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#E8EDF3"
             android:cacheColorHint="#00000000"
             android:divider="@null"
             android:fadingEdge="none"
@@ -30,6 +29,6 @@
             android:smoothScrollbar="true"
             android:transcriptMode="normal" />
 
-    </com.hero.zhaoq.emotionboardlib.EmoticonsInputBoard>
+    </com.hero.zhaoq.emotionboardlib.widget.EmoticonsInputBoard>
 
 </LinearLayout>

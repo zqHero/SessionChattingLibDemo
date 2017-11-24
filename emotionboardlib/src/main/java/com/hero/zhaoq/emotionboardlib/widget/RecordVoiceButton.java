@@ -43,7 +43,6 @@ public class RecordVoiceButton extends android.support.v7.widget.AppCompatButton
 
     private File myRecAudioFile;
 
-//    private ChattingListAdapter mMsgListAdapter;
     private static final int MIN_INTERVAL_TIME = 1000;// 1s
     private final static int CANCEL_RECORD = 5;
     private final static int START_RECORD = 7;
@@ -232,12 +231,12 @@ public class RecordVoiceButton extends android.support.v7.widget.AppCompatButton
         }
         recordIndicator = new Dialog(getContext(), IdHelper.getStyle(mContext, "jmui_record_voice_dialog"));
         recordIndicator.setContentView(R.layout.jmui_dialog_record_voice);
-        mVolumeIv = (ImageView) recordIndicator.findViewById(R.id.jmui_volume_hint_iv);
-        mRecordHintTv = (TextView) recordIndicator.findViewById(R.id.jmui_record_voice_tv);
-        mVoiceTime = (Chronometer) recordIndicator.findViewById(R.id.voice_time);
+        mVolumeIv =  recordIndicator.findViewById(R.id.jmui_volume_hint_iv);
+        mRecordHintTv = recordIndicator.findViewById(R.id.jmui_record_voice_tv);
+        mVoiceTime =  recordIndicator.findViewById(R.id.voice_time);
 
-        mTimeDown = (TextView) recordIndicator.findViewById(R.id.time_down);
-        mMicShow = (LinearLayout) recordIndicator.findViewById(R.id.mic_show);
+        mTimeDown =  recordIndicator.findViewById(R.id.time_down);
+        mMicShow =  recordIndicator.findViewById(R.id.mic_show);
 
         mRecordHintTv.setText("手指上滑，取消发送");
         startRecording();
@@ -278,32 +277,6 @@ public class RecordVoiceButton extends android.support.v7.widget.AppCompatButton
                     }
                     //TODO   发送  语音消息：
                     Toast.makeText(mContext,"发送语音消息",Toast.LENGTH_SHORT).show();
-//                    try {
-//                        VoiceContent content = new VoiceContent(myRecAudioFile, duration);
-//                        Message msg = mConv.createSendMessage(content);
-//                        mMsgListAdapter.addMsgFromReceiptToList(msg);
-//                        if (mConv.getType() == ConversationType.single) {
-//                            UserInfo userInfo = (UserInfo) msg.getTargetInfo();
-//                            MessageSendingOptions options = new MessageSendingOptions();
-//                            options.setNeedReadReceipt(true);
-//                            JMessageClient.sendMessage(msg, options);
-////                            if (userInfo.isFriend()) {
-////                                JMessageClient.sendMessage(msg);
-////                            } else {
-////                                CustomContent customContent = new CustomContent();
-////                                customContent.setBooleanValue("notFriend", true);
-////                                Message customMsg = mConv.createSendMessage(customContent);
-////                                mMsgListAdapter.addMsgToList(customMsg);
-////                            }
-//                        } else {
-//                            MessageSendingOptions options = new MessageSendingOptions();
-//                            options.setNeedReadReceipt(true);
-//                            JMessageClient.sendMessage(msg, options);
-//                        }
-//                        mChatView.setToBottom();
-//                    } catch (FileNotFoundException e) {
-//                        e.printStackTrace();
-//                    }
                 } else {
                     Toast.makeText(mContext,"若要使用语音功能，请选择允许录音", Toast.LENGTH_SHORT).show();
                 }

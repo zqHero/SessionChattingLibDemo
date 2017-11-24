@@ -1,4 +1,4 @@
-package com.hero.zhaoq.emotionboardlib;
+package com.hero.zhaoq.emotionboardlib.widget;
 
 import android.app.Activity;
 import android.content.Context;
@@ -7,6 +7,7 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -16,16 +17,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.hero.zhaoq.emotionboardlib.EmoticonsInputBoardUtils;
+import com.hero.zhaoq.emotionboardlib.R;
 import com.hero.zhaoq.emotionboardlib.adapter.PageSetAdapter;
 import com.hero.zhaoq.emotionboardlib.entity.PageSetEntity;
-import com.hero.zhaoq.emotionboardlib.utils.EmoticonsKeyboardUtils;
-import com.hero.zhaoq.emotionboardlib.widget.AutoHeightLayout;
-import com.hero.zhaoq.emotionboardlib.widget.EmoticonsEditText;
-import com.hero.zhaoq.emotionboardlib.widget.EmoticonsFuncView;
-import com.hero.zhaoq.emotionboardlib.widget.EmoticonsIndicatorView;
-import com.hero.zhaoq.emotionboardlib.widget.EmoticonsToolBarView;
-import com.hero.zhaoq.emotionboardlib.widget.FuncLayout;
-import com.hero.zhaoq.emotionboardlib.widget.RecordVoiceButton;
 
 import java.util.ArrayList;
 
@@ -36,7 +31,7 @@ import java.util.ArrayList;
  * zhaoqiang:zhaoq_hero@163.com
  */
 public class EmoticonsInputBoard extends AutoHeightLayout implements View.OnClickListener, EmoticonsFuncView.OnEmoticonsPageViewListener,
-        EmoticonsToolBarView.OnToolBarItemClickListener, EmoticonsEditText.OnBackKeyClickListener, FuncLayout.OnFuncChangeListener {
+        EmoticonsToolBarView.OnToolBarItemClickListener, EmoticonsEditText.OnBackKeyClickListener, EmoticonsPageLayout.OnFuncChangeListener {
 
     public static final int FUNC_TYPE_EMOTION = -1;
     public static final int FUNC_TYPE_APPPS = -2;
@@ -50,7 +45,7 @@ public class EmoticonsInputBoard extends AutoHeightLayout implements View.OnClic
     protected RelativeLayout mRlInput;
     protected ImageView mBtnMultimedia;
     protected Button mBtnSend;
-    protected FuncLayout mLyKvml;
+    protected EmoticonsPageLayout emotionPageLayout;
 
     protected EmoticonsFuncView mEmoticonsFuncView;
     protected EmoticonsIndicatorView mEmoticonsIndicatorView;
@@ -61,28 +56,21 @@ public class EmoticonsInputBoard extends AutoHeightLayout implements View.OnClic
     public EmoticonsInputBoard(Context context, AttributeSet attrs) {
         super(context, attrs);
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        inflateKeyboardBar();
-        initView();
-        initFuncView();
-    }
-
-    protected void inflateKeyboardBar() {
         mInflater.inflate(R.layout.view_keyboard_input, this);
-    }
-
-    protected View inflateFunc() {
-        return mInflater.inflate(R.layout.view_board_func, null);
+        initView();
+        initEmoticonFuncView();
+        initEditView();
     }
 
     protected void initView() {
-        mBtnVoiceOrText = ((ImageView) findViewById(R.id.btn_voice_or_text));
-        mBtnVoice = ((RecordVoiceButton) findViewById(R.id.btn_voice));
-        mEtChat = ((EmoticonsEditText) findViewById(R.id.et_chat));
-        mBtnFace = ((ImageView) findViewById(R.id.btn_face));
-        mRlInput = ((RelativeLayout) findViewById(R.id.rl_input));
-        mBtnMultimedia = ((ImageView) findViewById(R.id.btn_multimedia));
-        mBtnSend = ((Button) findViewById(R.id.btn_send));
-        mLyKvml = ((FuncLayout) findViewById(R.id.ly_kvml));
+        mBtnVoiceOrText = findViewById(R.id.btn_voice_or_text);
+        mBtnVoice = findViewById(R.id.btn_voice);
+        mEtChat = findViewById(R.id.et_chat);
+        mBtnFace = findViewById(R.id.btn_face);
+        mRlInput = findViewById(R.id.rl_input);
+        mBtnMultimedia = findViewById(R.id.btn_multimedia);
+        mBtnSend = findViewById(R.id.btn_send);
+        emotionPageLayout = findViewById(R.id.emotion_page_layout);
 
         mBtnVoiceOrText.setOnClickListener(this);
         mBtnFace.setOnClickListener(this);
@@ -90,20 +78,15 @@ public class EmoticonsInputBoard extends AutoHeightLayout implements View.OnClic
         mEtChat.setOnBackKeyClickListener(this);
     }
 
-    protected void initFuncView() {
-        initEmoticonFuncView();
-        initEditView();
-    }
-
     protected void initEmoticonFuncView() {
-        View keyboardView = inflateFunc();
-        mLyKvml.addFuncView(FUNC_TYPE_EMOTION, keyboardView);
+        View keyboardView = mInflater.inflate(R.layout.view_board_func, null);
+        emotionPageLayout.addFuncView(FUNC_TYPE_EMOTION, keyboardView);
         mEmoticonsFuncView = findViewById(R.id.view_epv);
-        mEmoticonsIndicatorView =  findViewById(R.id.view_eiv);
-        mEmoticonsToolBarView =  findViewById(R.id.view_etv);
+        mEmoticonsIndicatorView = findViewById(R.id.view_eiv);
+        mEmoticonsToolBarView = findViewById(R.id.view_etv);
         mEmoticonsFuncView.setOnIndicatorListener(this);
         mEmoticonsToolBarView.setOnToolBarItemClickListener(this);
-        mLyKvml.setOnFuncChangeListener(this);
+        emotionPageLayout.setOnFuncChangeListener(this);
     }
 
     protected void initEditView() {
@@ -154,12 +137,12 @@ public class EmoticonsInputBoard extends AutoHeightLayout implements View.OnClic
     }
 
     public void addFuncView(View view) {
-        mLyKvml.addFuncView(FUNC_TYPE_APPPS, view);
+        emotionPageLayout.addFuncView(FUNC_TYPE_APPPS, view);
     }
 
     public void reset() {
-        EmoticonsKeyboardUtils.closeSoftKeyboard(this);
-        mLyKvml.hideAllFuncView();
+        EmoticonsInputBoardUtils.closeSoftKeyboard(this);
+        emotionPageLayout.hideAllFuncView();
         mBtnFace.setImageResource(R.drawable.icon_face_nomal);
     }
 
@@ -184,7 +167,7 @@ public class EmoticonsInputBoard extends AutoHeightLayout implements View.OnClic
 
     protected void toggleFuncView(int key) {
         showText();
-        mLyKvml.toggleFuncView(key, isSoftKeyboardPop(), mEtChat);
+        emotionPageLayout.toggleFuncView(key, isSoftKeyboardPop(), mEtChat);
     }
 
     @Override
@@ -197,36 +180,30 @@ public class EmoticonsInputBoard extends AutoHeightLayout implements View.OnClic
         checkVoice();
     }
 
-    protected void setFuncViewHeight(int height) {
-        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) mLyKvml.getLayoutParams();
-        params.height = height;
-        mLyKvml.setLayoutParams(params);
-    }
-
     @Override
     public void onSoftKeyboardHeightChanged(int height) {
-        mLyKvml.updateHeight(height);
+        emotionPageLayout.updateHeight(height);
     }
 
     @Override
     public void OnSoftPop(int height) {
         super.OnSoftPop(height);
-        mLyKvml.setVisibility(true);
-        onFuncChange(mLyKvml.DEF_KEY);
+        emotionPageLayout.setVisibility(true);
+        onFuncChange(emotionPageLayout.DEF_KEY);
     }
 
     @Override
     public void OnSoftClose() {
         super.OnSoftClose();
-        if (mLyKvml.isOnlyShowSoftKeyboard()) {
+        if (emotionPageLayout.isOnlyShowSoftKeyboard()) {
             reset();
         } else {
-            onFuncChange(mLyKvml.getCurrentFuncKey());
+            onFuncChange(emotionPageLayout.getCurrentFuncKey());
         }
     }
 
-    public void addOnFuncKeyBoardListener(FuncLayout.OnFuncKeyBoardListener l) {
-        mLyKvml.addOnKeyBoardListener(l);
+    public void addOnFuncKeyBoardListener(EmoticonsPageLayout.OnFuncKeyBoardListener l) {
+        emotionPageLayout.addOnKeyBoardListener(l);
     }
 
     @Override
@@ -247,16 +224,6 @@ public class EmoticonsInputBoard extends AutoHeightLayout implements View.OnClic
     @Override
     public void onClick(View v) {
         int i = v.getId();
-        /*if (i == R.id.btn_voice_or_text) {
-            if (mRlInput.isShown()) {
-                mBtnVoiceOrText.setImageResource(R.drawable.btn_voice_or_text_keyboard);
-                showVoice();
-            } else {
-                showText();
-                mBtnVoiceOrText.setImageResource(R.drawable.btn_voice_or_text);
-                EmoticonsKeyboardUtils.openSoftKeyboard(mEtChat);
-            }
-        } else*/
         if (i == R.id.btn_face) {
             toggleFuncView(FUNC_TYPE_EMOTION);
         } else if (i == R.id.btn_multimedia) {
@@ -264,14 +231,14 @@ public class EmoticonsInputBoard extends AutoHeightLayout implements View.OnClic
         }
     }
 
-    public  void setVideoText() {
+    public void setVideoText() {
         if (mRlInput.isShown()) {
             mBtnVoiceOrText.setImageResource(R.drawable.btn_voice_or_text_keyboard);
             showVoice();
         } else {
             showText();
             mBtnVoiceOrText.setImageResource(R.drawable.btn_voice_or_text);
-            EmoticonsKeyboardUtils.openSoftKeyboard(mEtChat);
+            EmoticonsInputBoardUtils.openSoftKeyboard(mEtChat);
         }
     }
 
@@ -286,7 +253,7 @@ public class EmoticonsInputBoard extends AutoHeightLayout implements View.OnClic
 
     @Override
     public void onBackKeyClick() {
-        if (mLyKvml.isShown()) {
+        if (emotionPageLayout.isShown()) {
             mDispatchKeyEventPreImeLock = true;
             reset();
         }
@@ -300,7 +267,7 @@ public class EmoticonsInputBoard extends AutoHeightLayout implements View.OnClic
                     mDispatchKeyEventPreImeLock = false;
                     return true;
                 }
-                if (mLyKvml.isShown()) {
+                if (emotionPageLayout.isShown()) {
                     reset();
                     return true;
                 } else {
@@ -312,7 +279,7 @@ public class EmoticonsInputBoard extends AutoHeightLayout implements View.OnClic
 
     @Override
     public boolean requestFocus(int direction, Rect previouslyFocusedRect) {
-        if (EmoticonsKeyboardUtils.isFullScreen((Activity) getContext())) {
+        if (EmoticonsInputBoardUtils.isFullScreen((Activity) getContext())) {
             return false;
         }
         return super.requestFocus(direction, previouslyFocusedRect);
@@ -320,59 +287,17 @@ public class EmoticonsInputBoard extends AutoHeightLayout implements View.OnClic
 
     @Override
     public void requestChildFocus(View child, View focused) {
-        if (EmoticonsKeyboardUtils.isFullScreen((Activity) getContext())) {
+        if (EmoticonsInputBoardUtils.isFullScreen((Activity) getContext())) {
             return;
         }
         super.requestChildFocus(child, focused);
-    }
-
-    public boolean dispatchKeyEventInFullScreen(KeyEvent event) {
-        if (event == null) {
-            return false;
-        }
-        switch (event.getKeyCode()) {
-            case KeyEvent.KEYCODE_BACK:
-                if (EmoticonsKeyboardUtils.isFullScreen((Activity) getContext()) && mLyKvml.isShown()) {
-                    reset();
-                    return true;
-                }
-            default:
-                if (event.getAction() == KeyEvent.ACTION_DOWN) {
-                    boolean isFocused;
-                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-                        isFocused = mEtChat.getShowSoftInputOnFocus();
-                    } else {
-                        isFocused = mEtChat.isFocused();
-                    }
-                    if (isFocused) {
-                        mEtChat.onKeyDown(event.getKeyCode(), event);
-                    }
-                }
-                return false;
-        }
     }
 
     public EmoticonsEditText getEtChat() {
         return mEtChat;
     }
 
-    public RecordVoiceButton getBtnVoice() {
-        return mBtnVoice;
-    }
-
     public Button getBtnSend() {
         return mBtnSend;
-    }
-
-    public EmoticonsFuncView getEmoticonsFuncView() {
-        return mEmoticonsFuncView;
-    }
-
-    public EmoticonsIndicatorView getEmoticonsIndicatorView() {
-        return mEmoticonsIndicatorView;
-    }
-
-    public EmoticonsToolBarView getEmoticonsToolBarView() {
-        return mEmoticonsToolBarView;
     }
 }

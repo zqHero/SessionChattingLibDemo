@@ -1,11 +1,22 @@
 package com.hero.zhaoq.emotionboardlib.widget;
 
 import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.ImageSpan;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.widget.TextView;
 
+import com.hero.zhaoq.emotionboardlib.EmoticonsInputBoardUtils;
+
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * author: zhaoqiang
@@ -14,7 +25,6 @@ import java.util.ArrayList;
  */
 
 public class EmoticonsEditText extends RichEditText {
-
 
     public EmoticonsEditText(Context context) {
         this(context, null);
@@ -67,8 +77,23 @@ public class EmoticonsEditText extends RichEditText {
 
     @Override
     protected final void onTextChanged(CharSequence arg0, int start, int lengthBefore, int after) {
+//        //属于  表情符号：
+//        //获取  内容    处理表情图片信息：
+//        SpannableStringBuilder builder = new SpannableStringBuilder(getText().toString());
+//        Matcher m = Pattern.compile("\\[\\![^\\x00-\\xff]*\\!\\]").matcher(getText().toString());
+//        if (m != null) {
+//            while (m.find()) {
+//                Drawable draw = EmojiDisplay.getDrawable(getContext(), "emoji_0x" +
+//                        m.group().toString().substring(2, m.group().length() - 2));
+//                if (draw != null) {
+//                    draw.setBounds(0, 0,
+//                            EmoticonsInputBoardUtils.getFontHeight(this),
+//                            EmoticonsInputBoardUtils.getFontHeight(this));
+//                    builder.setSpan(new MyImageSpan(draw), m.start(), m.end(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+//                }
+//            }
+//        }
         super.onTextChanged(arg0, start, lengthBefore, after);
-
     }
 
     @Override
@@ -99,5 +124,33 @@ public class EmoticonsEditText extends RichEditText {
 
     public void setOnSizeChangedListener(OnSizeChangedListener i) {
         onSizeChangedListener = i;
+    }
+
+
+    // 显示 位置
+    class MyImageSpan extends ImageSpan {
+
+        public MyImageSpan(Drawable drawable) {
+            super(drawable);
+        }
+
+        @Override
+        public void draw(Canvas canvas, CharSequence text, int start, int end,
+                         float x, int top, int y, int bottom, Paint paint) {
+//            Paint.FontMetricsInt fm = paint.getFontMetricsInt();
+            Drawable drawable = getDrawable();
+//            Log.i("info", "measureHeight:" + getMeasuredHeight() + "====" +
+//                 "===start:" + start + "===end:" + end + "====x：" +
+//                    x + "====y:" + y + "=======top:" + top + "======bottom:" + bottom +
+//                    "=====descent :" + fm.descent + "=====ascent :" + fm.ascent +"====drawablebottom:"+
+//                    drawable.getBounds().bottom  + "=========" + fm.leading);
+//            int transY = (y + fm.descent + y + fm.ascent) / 2
+//                    - drawable.getBounds().bottom / 2;
+            int transY  = ((bottom-top) - drawable.getBounds().bottom)/2+top;
+            canvas.save();
+            canvas.translate(x, transY);
+            drawable.draw(canvas);
+            canvas.restore();
+        }
     }
 }

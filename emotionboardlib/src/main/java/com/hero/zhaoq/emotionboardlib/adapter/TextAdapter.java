@@ -31,9 +31,12 @@ public class TextAdapter extends BoardBaseAdapter {
         viewHolder.iv_emoticon.setLayoutParams(new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT));
+
         viewHolder.iv_emoticon.setVisibility(View.GONE);
+
         viewHolder.title.setText(emoticonBean.getContent());
         viewHolder.title.setTextSize(mContext.getResources().getDimensionPixelSize(R.dimen.emotion_text_size));
+
         viewHolder.iv_emoticon.setBackgroundResource(R.drawable.bg_emoticon);
 
         viewHolder.rootView.setOnClickListener(new View.OnClickListener() {

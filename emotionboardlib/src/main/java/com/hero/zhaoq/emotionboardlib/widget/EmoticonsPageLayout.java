@@ -3,13 +3,14 @@ package com.hero.zhaoq.emotionboardlib.widget;
 import android.app.Activity;
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
-import com.hero.zhaoq.emotionboardlib.utils.EmoticonsKeyboardUtils;
+import com.hero.zhaoq.emotionboardlib.EmoticonsInputBoardUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,7 @@ import java.util.List;
  * zhaoqiang:zhaoq_hero@163.com
  */
 
-public class FuncLayout extends LinearLayout {
+public class EmoticonsPageLayout extends LinearLayout {
 
     public final int DEF_KEY = Integer.MIN_VALUE;
 
@@ -30,7 +31,7 @@ public class FuncLayout extends LinearLayout {
 
     protected int mHeight = 0;
 
-    public FuncLayout(Context context, AttributeSet attrs) {
+    public EmoticonsPageLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
         setOrientation(VERTICAL);
     }
@@ -57,20 +58,20 @@ public class FuncLayout extends LinearLayout {
     public void toggleFuncView(int key, boolean isSoftKeyboardPop, EditText editText) {
         if (getCurrentFuncKey() == key) {
             if (isSoftKeyboardPop) {
-                if(EmoticonsKeyboardUtils.isFullScreen((Activity) getContext())){
-                    EmoticonsKeyboardUtils.closeSoftKeyboard(editText);
+                if(EmoticonsInputBoardUtils.isFullScreen((Activity) getContext())){
+                    EmoticonsInputBoardUtils.closeSoftKeyboard(editText);
                 } else {
-                    EmoticonsKeyboardUtils.closeSoftKeyboard(getContext());
+                    EmoticonsInputBoardUtils.closeSoftKeyboard(getContext());
                 }
             } else {
-                EmoticonsKeyboardUtils.openSoftKeyboard(editText);
+                EmoticonsInputBoardUtils.openSoftKeyboard(editText);
             }
         } else {
             if (isSoftKeyboardPop) {
-                if(EmoticonsKeyboardUtils.isFullScreen((Activity) getContext())){
-                    EmoticonsKeyboardUtils.closeSoftKeyboard(editText);
+                if(EmoticonsInputBoardUtils.isFullScreen((Activity) getContext())){
+                    EmoticonsInputBoardUtils.closeSoftKeyboard(editText);
                 } else {
-                    EmoticonsKeyboardUtils.closeSoftKeyboard(getContext());
+                    EmoticonsInputBoardUtils.closeSoftKeyboard(getContext());
                 }
             }
             showFuncView(key);
@@ -145,7 +146,6 @@ public class FuncLayout extends LinearLayout {
          * 功能布局弹起
          */
         void OnFuncPop(int height);
-
         /**
          * 功能布局关闭
          */

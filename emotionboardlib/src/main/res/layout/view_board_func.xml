@@ -25,14 +25,13 @@
         android:layout_margin="20dp"
         android:orientation="horizontal"
         />
-
-    <include
+    <View
         android:id="@+id/view_spit"
-        layout="@layout/ic_spitview_horizontal"
         android:layout_width="match_parent"
         android:layout_height="@dimen/horizontalspit_view_height"
-        android:layout_above="@+id/view_etv" />
-
+        android:background="@color/toolbar_btn_select"
+        android:layout_above="@+id/view_etv"
+        />
     <com.hero.zhaoq.emotionboardlib.widget.EmoticonsToolBarView
         android:id="@+id/view_etv"
         android:layout_width="match_parent"

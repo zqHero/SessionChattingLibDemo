@@ -39,17 +39,6 @@ public class EmoticonBean {
         this.mContent = content;
     }
 
-    public EmoticonBean(long eventType, String iconUri, String content) {
-        this.mEventType = eventType;
-        this.mIconUri = iconUri;
-        this.mContent = content;
-    }
-
-    public EmoticonBean(String iconUri, String content) {
-        this.mIconUri = iconUri;
-        this.mContent = content;
-    }
-
     public EmoticonBean(String content) {
         this.mContent = content;
     }

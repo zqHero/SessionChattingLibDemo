@@ -11,8 +11,8 @@ public class Constants {
     public static int EMOTICON_CLICK_TEXT = 1;  //表情
     public static int EMOTICON_CLICK_IMAGE = 2; //图片
 
-    public static String PICTURE_DIR = "sdcard/JChatDemo/pictures/";
-    public static String FILE_DIR = "sdcard/JChatDemo/recvFiles/";
+    public static String PICTURE_DIR = "sdcard/ChatDemo/pictures/";
+    public static String FILE_DIR = "sdcard/ChatDemo/recvFiles/";
 
     public static final String DEF_FILEPATH = "/Emoticons/";
 

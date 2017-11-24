@@ -7,9 +7,10 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.hero.zhaoq.emotionboardlib.EmoticonsInputBoardUtils;
 import com.hero.zhaoq.emotionboardlib.R;
 import com.hero.zhaoq.emotionboardlib.entity.PageSetEntity;
-import com.hero.zhaoq.emotionboardlib.utils.EmoticonsKeyboardUtils;
+import com.hero.zhaoq.emotionboardlib.utils.DimenUtils;
 
 import java.util.ArrayList;
 
@@ -51,7 +52,7 @@ public class EmoticonsIndicatorView extends LinearLayout {
         }
 
         mLeftLayoutParams = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        mLeftLayoutParams.leftMargin = EmoticonsKeyboardUtils.dip2px(context, MARGIN_LEFT);
+        mLeftLayoutParams.leftMargin = DimenUtils.dip2px(context, MARGIN_LEFT);
     }
 
     public void playTo(int position, PageSetEntity pageSetEntity) {
