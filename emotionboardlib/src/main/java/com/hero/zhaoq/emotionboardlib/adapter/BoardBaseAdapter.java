@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.hero.zhaoq.emotionboardlib.R;
-import com.hero.zhaoq.emotionboardlib.entity.EmoticonPageEntity;
+import com.hero.zhaoq.emotionboardlib.entity.EmoticonPageBean;
 import com.hero.zhaoq.emotionboardlib.interfce.EmoticonClickListener;
 
 import java.util.ArrayList;
@@ -27,14 +27,14 @@ public abstract class BoardBaseAdapter<T> extends BaseAdapter {
     protected Context mContext;
     protected LayoutInflater mInflater;
     protected ArrayList<T> mData = new ArrayList<>();
-    protected EmoticonPageEntity mEmoticonPageEntity;
+    protected EmoticonPageBean mEmoticonPageBean;
     protected EmoticonClickListener mOnEmoticonClickListener;
 
-    public BoardBaseAdapter(Context context, EmoticonPageEntity emoticonPageEntity, EmoticonClickListener onEmoticonClickListener) {
+    public BoardBaseAdapter(Context context, EmoticonPageBean emoticonPageBean, EmoticonClickListener onEmoticonClickListener) {
         this.mContext = context;
         this.mInflater = LayoutInflater.from(context);
-        this.mData.addAll(emoticonPageEntity.getEmoticonList());
-        this.mEmoticonPageEntity = emoticonPageEntity;
+        this.mData.addAll(emoticonPageBean.getEmoticonList());
+        this.mEmoticonPageBean = emoticonPageBean;
         this.mOnEmoticonClickListener = onEmoticonClickListener;
     }
 
@@ -71,7 +71,7 @@ public abstract class BoardBaseAdapter<T> extends BaseAdapter {
 //            viewHolder = (ViewHolder) convertView.getTag();
 //        }
 
-        int realItemHeight = ((View) parent.getParent()).getMeasuredHeight() / mEmoticonPageEntity.getLine();
+        int realItemHeight = ((View) parent.getParent()).getMeasuredHeight() / mEmoticonPageBean.getLine();
         viewHolder.rootView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, realItemHeight));
 
         bindView(position, viewHolder, parent);

@@ -10,11 +10,12 @@ import java.util.ArrayList;
  * zhaoqiang:zhaoq_hero@163.com
  */
 
-public class EmoticonPageSetEntity<T> extends PageSetEntity<EmoticonPageEntity> {
+public class EmoticonPageSetEntity<T> extends PageSetEntity<EmoticonPageBean> {
 
     final int mLine;
     final int mRow;
-    final EmoticonPageEntity.DelBtnStatus mDelBtnStatus;
+
+    final EmoticonPageBean.DelBtnStatus mDelBtnStatus;
     final ArrayList<T> mEmoticonList;
 
     public EmoticonPageSetEntity(final Builder builder) {
@@ -33,7 +34,7 @@ public class EmoticonPageSetEntity<T> extends PageSetEntity<EmoticonPageEntity> 
         return mRow;
     }
 
-    public EmoticonPageEntity.DelBtnStatus getDelBtnStatus() {
+    public EmoticonPageBean.DelBtnStatus getDelBtnStatus() {
         return mDelBtnStatus;
     }
 
@@ -54,7 +55,7 @@ public class EmoticonPageSetEntity<T> extends PageSetEntity<EmoticonPageEntity> 
         /**
          * 删除按钮
          */
-        protected EmoticonPageEntity.DelBtnStatus delBtnStatus = EmoticonPageEntity.DelBtnStatus.GONE;
+        protected EmoticonPageBean.DelBtnStatus delBtnStatus = EmoticonPageBean.DelBtnStatus.GONE;
         /**
          * 表情集数据源
          */
@@ -75,7 +76,7 @@ public class EmoticonPageSetEntity<T> extends PageSetEntity<EmoticonPageEntity> 
             return this;
         }
 
-        public Builder setShowDelBtn(EmoticonPageEntity.DelBtnStatus showDelBtn) {
+        public Builder setShowDelBtn(EmoticonPageBean.DelBtnStatus showDelBtn) {
             delBtnStatus = showDelBtn;
             return this;
         }
@@ -124,13 +125,13 @@ public class EmoticonPageSetEntity<T> extends PageSetEntity<EmoticonPageEntity> 
             }
 
             for (int i = 0; i < pageCount; i++) {
-                EmoticonPageEntity emoticonPageEntity = new EmoticonPageEntity();
-                emoticonPageEntity.setLine(line);
-                emoticonPageEntity.setRow(row);
-                emoticonPageEntity.setDelBtnStatus(delBtnStatus);
-                emoticonPageEntity.setEmoticonList(emoticonList.subList(start, end));
-                emoticonPageEntity.setIPageViewInstantiateItem(pageViewInstantiateListener);
-                pageEntityList.add(emoticonPageEntity);
+                EmoticonPageBean emoticonPageBean = new EmoticonPageBean();
+                emoticonPageBean.setLine(line);
+                emoticonPageBean.setRow(row);
+                emoticonPageBean.setDelBtnStatus(delBtnStatus);
+                emoticonPageBean.setEmoticonList(emoticonList.subList(start, end));
+                emoticonPageBean.setIPageViewInstantiateItem(pageViewInstantiateListener);
+                pageEntityList.add(emoticonPageBean);
 
                 start = everyPageMaxSum + i * everyPageMaxSum;
                 end = everyPageMaxSum + (i + 1) * everyPageMaxSum;

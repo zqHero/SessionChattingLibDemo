@@ -1,14 +1,15 @@
 package com.hero.zhaoq.emotionboardlib.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.hero.zhaoq.emotionboardlib.Constants;
 import com.hero.zhaoq.emotionboardlib.R;
-import com.hero.zhaoq.emotionboardlib.entity.EmoticonEntity;
-import com.hero.zhaoq.emotionboardlib.entity.EmoticonPageEntity;
+import com.hero.zhaoq.emotionboardlib.entity.EmoticonBean;
+import com.hero.zhaoq.emotionboardlib.entity.EmoticonPageBean;
 import com.hero.zhaoq.emotionboardlib.interfce.EmoticonClickListener;
 import com.hero.zhaoq.emotionboardlib.utils.ImageLoader;
 
@@ -21,18 +22,17 @@ import java.io.IOException;
  */
 public class ImageAdapter<T> extends BoardBaseAdapter {
 
-    public ImageAdapter(Context context, EmoticonPageEntity emoticonPageEntity,
+    public ImageAdapter(Context context, EmoticonPageBean emoticonPageBean,
                         EmoticonClickListener onEmoticonClickListener) {
-        super(context, emoticonPageEntity, onEmoticonClickListener);
+        super(context, emoticonPageBean, onEmoticonClickListener);
     }
-
 
     @Override
     protected void bindView(int position, ViewHolder viewHolder, ViewGroup parent) {
-        final EmoticonEntity emoticonEntity = (EmoticonEntity) mData.get(position);
-        if (emoticonEntity == null) return;
+        final EmoticonBean emoticonBean = (EmoticonBean) mData.get(position);
+        if (emoticonBean == null) return;
         try {
-            ImageLoader.getInstance(viewHolder.iv_emoticon.getContext()).displayImage(emoticonEntity.getIconUri(),
+            ImageLoader.getInstance(viewHolder.iv_emoticon.getContext()).displayImage(emoticonBean.getIconUri(),
                     viewHolder.iv_emoticon);
         } catch (IOException e) {
             e.printStackTrace();
@@ -42,14 +42,13 @@ public class ImageAdapter<T> extends BoardBaseAdapter {
                 mContext.getResources().getDimensionPixelOffset(R.dimen.item_emoticon_image_size),
                 mContext.getResources().getDimensionPixelOffset(R.dimen.item_emoticon_image_size)));
         viewHolder.iv_emoticon.setBackgroundResource(R.drawable.bg_emoticon);
-        viewHolder.title.setText(emoticonEntity.getContent());
-
+        viewHolder.title.setText(emoticonBean.getContent() + "");
 
         viewHolder.rootView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mOnEmoticonClickListener != null) {
-                    mOnEmoticonClickListener.onEmoticonClick(emoticonEntity, Constants.EMOTICON_CLICK_IMAGE, false);
+                    mOnEmoticonClickListener.onEmoticonClick(emoticonBean, Constants.EMOTICON_CLICK_IMAGE, false);
                 }
             }
         });

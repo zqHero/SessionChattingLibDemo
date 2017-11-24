@@ -11,6 +11,7 @@
         android:id="@+id/view_epv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
         android:layout_above="@+id/view_eiv"
         android:orientation="vertical"
         />
@@ -21,8 +22,9 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/view_spit"
         android:gravity="center"
+        android:layout_margin="20dp"
         android:orientation="horizontal"
-        android:paddingBottom="@dimen/indicator_margin" />
+        />
 
     <include
         android:id="@+id/view_spit"

@@ -9,7 +9,6 @@ import java.util.UUID;
  * date:2017/11/21 / 11:16
  * zhaoqiang:zhaoq_hero@163.com
  */
-
 public class PageSetEntity<T extends PageEntity> implements Serializable {
 
     protected final String uuid = UUID.randomUUID().toString();

@@ -12,8 +12,7 @@ import java.util.List;
  * date:2017/11/21 / 14:42
  * zhaoqiang:zhaoq_hero@163.com
  */
-
-public class EmoticonPageEntity<T> extends PageEntity<EmoticonPageEntity> {
+public class EmoticonPageBean<T> extends PageEntity<EmoticonPageBean> {
 
     public enum DelBtnStatus {
         // 0,1,2
@@ -73,10 +72,10 @@ public class EmoticonPageEntity<T> extends PageEntity<EmoticonPageEntity> {
         this.mDelBtnStatus = delBtnStatus;
     }
 
-    public EmoticonPageEntity() { }
+    public EmoticonPageBean() { }
 
     @Override
-    public View instantiateItem(final ViewGroup container, int position, EmoticonPageEntity pageEntity) {
+    public View instantiateItem(final ViewGroup container, int position, EmoticonPageBean pageEntity) {
         if(mPageViewInstantiateListener != null){
             return mPageViewInstantiateListener.instantiateItem(container, position, this);
         }

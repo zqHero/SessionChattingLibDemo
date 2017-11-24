@@ -17,11 +17,11 @@ import java.util.ArrayList;
  * author: zhaoqiang
  * date:2017/11/21 / 11:58
  * zhaoqiang:zhaoq_hero@163.com
+ * 表情滑动的  指示器：
  */
-
 public class EmoticonsIndicatorView extends LinearLayout {
 
-    private static final int MARGIN_LEFT = 4;
+    private static final int MARGIN_LEFT = 8;
     protected Context mContext;
     protected ArrayList<ImageView> mImageViews;
     protected Drawable mDrawableSelect;
@@ -58,9 +58,7 @@ public class EmoticonsIndicatorView extends LinearLayout {
         if (!checkPageSetEntity(pageSetEntity)) {
             return;
         }
-
         updateIndicatorCount(pageSetEntity.getPageCount());
-
         for (ImageView iv : mImageViews) {
             iv.setImageDrawable(mDrawableNomal);
         }
@@ -71,20 +69,15 @@ public class EmoticonsIndicatorView extends LinearLayout {
         if (!checkPageSetEntity(pageSetEntity)) {
             return;
         }
-
         updateIndicatorCount(pageSetEntity.getPageCount());
-
         if (startPosition < 0 || nextPosition < 0 || nextPosition == startPosition) {
             startPosition = nextPosition = 0;
         }
-
         if (startPosition < 0) {
             startPosition = nextPosition = 0;
         }
-
         final ImageView imageViewStrat = mImageViews.get(startPosition);
         final ImageView imageViewNext = mImageViews.get(nextPosition);
-
         imageViewStrat.setImageDrawable(mDrawableNomal);
         imageViewNext.setImageDrawable(mDrawableSelect);
     }

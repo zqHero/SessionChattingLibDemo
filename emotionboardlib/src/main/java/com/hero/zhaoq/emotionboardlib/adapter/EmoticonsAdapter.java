@@ -8,8 +8,8 @@ import android.widget.LinearLayout;
 
 import com.hero.zhaoq.emotionboardlib.Constants;
 import com.hero.zhaoq.emotionboardlib.R;
-import com.hero.zhaoq.emotionboardlib.entity.EmoticonEntity;
-import com.hero.zhaoq.emotionboardlib.entity.EmoticonPageEntity;
+import com.hero.zhaoq.emotionboardlib.entity.EmoticonBean;
+import com.hero.zhaoq.emotionboardlib.entity.EmoticonPageBean;
 import com.hero.zhaoq.emotionboardlib.interfce.EmoticonClickListener;
 import com.hero.zhaoq.emotionboardlib.utils.ImageLoader;
 
@@ -20,27 +20,25 @@ import java.io.IOException;
  * date:2017/11/23 / 14:42
  * zhaoqiang:zhaoq_hero@163.com
  */
-public class EmotionsAdapter<T> extends BoardBaseAdapter {
+public class EmoticonsAdapter<T> extends BoardBaseAdapter {
 
     protected int mDelbtnPosition;
 
-    public EmotionsAdapter(Context context, EmoticonPageEntity emoticonPageEntity, EmoticonClickListener onEmoticonClickListener) {
-        super(context,emoticonPageEntity,onEmoticonClickListener);
+    public EmoticonsAdapter(Context context, EmoticonPageBean emoticonPageBean, EmoticonClickListener onEmoticonClickListener) {
+        super(context, emoticonPageBean,onEmoticonClickListener);
         this.mDelbtnPosition = -1;
-        checkDelBtn(emoticonPageEntity);
+        checkDelBtn(emoticonPageBean);
     }
 
-
-
-    private void checkDelBtn(EmoticonPageEntity entity) {
-        EmoticonPageEntity.DelBtnStatus delBtnStatus = entity.getDelBtnStatus();
-        if (EmoticonPageEntity.DelBtnStatus.GONE.equals(delBtnStatus)) {
+    private void checkDelBtn(EmoticonPageBean entity) {
+        EmoticonPageBean.DelBtnStatus delBtnStatus = entity.getDelBtnStatus();
+        if (EmoticonPageBean.DelBtnStatus.GONE.equals(delBtnStatus)) {
             return;
         }
-        if (EmoticonPageEntity.DelBtnStatus.FOLLOW.equals(delBtnStatus)) {
+        if (EmoticonPageBean.DelBtnStatus.FOLLOW.equals(delBtnStatus)) {
             mDelbtnPosition = getCount();
             mData.add(null);
-        } else if (EmoticonPageEntity.DelBtnStatus.LAST.equals(delBtnStatus)) {
+        } else if (EmoticonPageBean.DelBtnStatus.LAST.equals(delBtnStatus)) {
             int max = entity.getLine() * entity.getRow();
             while (getCount() < max) {
                 mData.add(null);
@@ -56,14 +54,14 @@ public class EmotionsAdapter<T> extends BoardBaseAdapter {
     @Override
     protected void bindView(int position, ViewHolder viewHolder, ViewGroup parent) {
         final boolean isDelBtn = isDelBtn(position);
-        final EmoticonEntity emoticonEntity = (EmoticonEntity) mData.get(position);
+        final EmoticonBean emoticonBean = (EmoticonBean) mData.get(position);
         if (isDelBtn) {
             viewHolder.iv_emoticon.setImageResource(R.mipmap.icon_del);
             viewHolder.iv_emoticon.setBackgroundResource(R.drawable.bg_emoticon);
         } else {
-            if (emoticonEntity != null) {
+            if (emoticonBean != null) {
                 try {
-                    ImageLoader.getInstance(viewHolder.iv_emoticon.getContext()).displayImage(emoticonEntity.getIconUri(),
+                    ImageLoader.getInstance(viewHolder.iv_emoticon.getContext()).displayImage(emoticonBean.getIconUri(),
                             viewHolder.iv_emoticon);
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -81,7 +79,7 @@ public class EmotionsAdapter<T> extends BoardBaseAdapter {
             @Override
             public void onClick(View v) {
                 if (mOnEmoticonClickListener != null) {
-                    mOnEmoticonClickListener.onEmoticonClick(emoticonEntity, Constants.EMOTICON_CLICK_TEXT, isDelBtn);
+                    mOnEmoticonClickListener.onEmoticonClick(emoticonBean, Constants.EMOTICON_CLICK_TEXT, isDelBtn);
                 }
             }
         });

@@ -7,9 +7,9 @@ import android.widget.LinearLayout;
 
 import com.hero.zhaoq.emotionboardlib.Constants;
 import com.hero.zhaoq.emotionboardlib.R;
+import com.hero.zhaoq.emotionboardlib.entity.EmoticonBean;
 import com.hero.zhaoq.emotionboardlib.interfce.EmoticonClickListener;
-import com.hero.zhaoq.emotionboardlib.entity.EmoticonEntity;
-import com.hero.zhaoq.emotionboardlib.entity.EmoticonPageEntity;
+import com.hero.zhaoq.emotionboardlib.entity.EmoticonPageBean;
 
 /**
  * author: zhaoqiang
@@ -20,19 +20,19 @@ import com.hero.zhaoq.emotionboardlib.entity.EmoticonPageEntity;
  */
 public class TextAdapter extends BoardBaseAdapter {
 
-    public TextAdapter(Context context, EmoticonPageEntity emoticonPageEntity, EmoticonClickListener onEmoticonClickListener) {
-        super(context, emoticonPageEntity, onEmoticonClickListener);
+    public TextAdapter(Context context, EmoticonPageBean emoticonPageBean, EmoticonClickListener onEmoticonClickListener) {
+        super(context, emoticonPageBean, onEmoticonClickListener);
     }
 
     @Override
     protected void bindView(int position, ViewHolder viewHolder, ViewGroup parent) {
-        final EmoticonEntity emoticonEntity = (EmoticonEntity) mData.get(position);
-        if (emoticonEntity == null) return;
+        final EmoticonBean emoticonBean = (EmoticonBean) mData.get(position);
+        if (emoticonBean == null) return;
         viewHolder.iv_emoticon.setLayoutParams(new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT));
         viewHolder.iv_emoticon.setVisibility(View.GONE);
-        viewHolder.title.setText(emoticonEntity.getContent());
+        viewHolder.title.setText(emoticonBean.getContent());
         viewHolder.title.setTextSize(mContext.getResources().getDimensionPixelSize(R.dimen.emotion_text_size));
         viewHolder.iv_emoticon.setBackgroundResource(R.drawable.bg_emoticon);
 
@@ -40,7 +40,7 @@ public class TextAdapter extends BoardBaseAdapter {
             @Override
             public void onClick(View v) {
                 if (mOnEmoticonClickListener != null) {
-                    mOnEmoticonClickListener.onEmoticonClick(emoticonEntity, Constants.EMOTICON_CLICK_TEXT, false);
+                    mOnEmoticonClickListener.onEmoticonClick(emoticonBean, Constants.EMOTICON_CLICK_TEXT, false);
                 }
             }
         });

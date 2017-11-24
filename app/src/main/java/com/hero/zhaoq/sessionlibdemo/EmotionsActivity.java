@@ -9,9 +9,9 @@ import android.widget.Toast;
 
 import com.hero.zhaoq.emotionboardlib.Constants;
 import com.hero.zhaoq.emotionboardlib.EmoticonsInputBoard;
+import com.hero.zhaoq.emotionboardlib.entity.EmoticonBean;
 import com.hero.zhaoq.emotionboardlib.interfce.EmoticonClickListener;
 import com.hero.zhaoq.emotionboardlib.EmotionsPageManager;
-import com.hero.zhaoq.emotionboardlib.entity.EmoticonEntity;
 import com.hero.zhaoq.emotionboardlib.widget.EmoticonsEditText;
 import com.hero.zhaoq.emotionboardlib.widget.FuncLayout;
 import com.hero.zhaoq.emotionboardlib.widget.SimpleAppsGridView;
@@ -49,17 +49,17 @@ public class EmotionsActivity extends AppCompatActivity implements FuncLayout.On
                         return;
                     }
                     if (actionType == Constants.EMOTICON_CLICK_IMAGE) {
-                        if (o instanceof EmoticonEntity) {
+                        if (o instanceof EmoticonBean) {
                             //TODO  SendImage
-                            Toast.makeText(EmotionsActivity.this, "图片:" + ((EmoticonEntity)o).getContent(),
+                            Toast.makeText(EmotionsActivity.this, "图片:" + ((EmoticonBean)o).getContent(),
                                     Toast.LENGTH_SHORT).show();
                         }
                     } else {
                         String content = null;
                         if (o instanceof EmojiBean) {
                             content = ((EmojiBean) o).emoji;
-                        } else if (o instanceof EmoticonEntity) {
-                            content = ((EmoticonEntity) o).getContent();
+                        } else if (o instanceof EmoticonBean) {
+                            content = ((EmoticonBean) o).getContent();
                         }
 
                         if (TextUtils.isEmpty(content)) {

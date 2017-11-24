@@ -16,7 +16,6 @@ import java.util.List;
  * date:2017/11/21 / 17:41
  * zhaoqiang:zhaoq_hero@163.com
  */
-
 public abstract class CheckPremissionActivity extends AppCompatActivity{
 
     @Override

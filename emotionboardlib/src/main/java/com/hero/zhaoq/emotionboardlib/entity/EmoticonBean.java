@@ -5,7 +5,7 @@ package com.hero.zhaoq.emotionboardlib.entity;
  * date:2017/11/21 / 14:41
  * zhaoqiang:zhaoq_hero@163.com
  */
-public class EmoticonEntity {
+public class EmoticonBean {
 
     private long mEventType;
     private String mIconUri;
@@ -39,26 +39,26 @@ public class EmoticonEntity {
         this.mContent = content;
     }
 
-    public EmoticonEntity(long eventType, String iconUri, String content) {
+    public EmoticonBean(long eventType, String iconUri, String content) {
         this.mEventType = eventType;
         this.mIconUri = iconUri;
         this.mContent = content;
     }
 
-    public EmoticonEntity(String iconUri, String content) {
+    public EmoticonBean(String iconUri, String content) {
         this.mIconUri = iconUri;
         this.mContent = content;
     }
 
-    public EmoticonEntity(String content) {
+    public EmoticonBean(String content) {
         this.mContent = content;
     }
 
-    public EmoticonEntity() { }
+    public EmoticonBean() { }
 
     @Override
     public String toString() {
-        return "EmoticonEntity{" +
+        return "EmoticonBean{" +
                 "mEventType=" + mEventType +
                 ", mIconUri='" + mIconUri + '\'' +
                 ", mContent='" + mContent + '\'' +

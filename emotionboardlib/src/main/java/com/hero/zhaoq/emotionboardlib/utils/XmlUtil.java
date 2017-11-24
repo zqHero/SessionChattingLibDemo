@@ -5,8 +5,8 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.util.Xml;
 
-import com.hero.zhaoq.emotionboardlib.entity.EmoticonEntity;
-import com.hero.zhaoq.emotionboardlib.entity.EmoticonPageEntity;
+import com.hero.zhaoq.emotionboardlib.entity.EmoticonBean;
+import com.hero.zhaoq.emotionboardlib.entity.EmoticonPageBean;
 import com.hero.zhaoq.emotionboardlib.entity.EmoticonPageSetEntity;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -60,15 +60,15 @@ public class XmlUtil {
      * @param inStream
      * @return
      */
-    public EmoticonPageSetEntity<EmoticonEntity> ParserXml(String filePath, InputStream inStream) {
+    public EmoticonPageSetEntity<EmoticonBean> ParserXml(String filePath, InputStream inStream) {
 
         String arrayParentKey = "EmoticonBean";
         boolean isChildCheck = false;
 
-        EmoticonPageSetEntity.Builder<EmoticonEntity> emoticonPageSetEntity = new EmoticonPageSetEntity.Builder<>();
-        ArrayList<EmoticonEntity> emoticonList = new ArrayList<>();
+        EmoticonPageSetEntity.Builder<EmoticonBean> emoticonPageSetEntity = new EmoticonPageSetEntity.Builder<>();
+        ArrayList<EmoticonBean> emoticonList = new ArrayList<>();
         emoticonPageSetEntity.setEmoticonList(emoticonList);
-        EmoticonEntity emoticonBeanTemp = null;
+        EmoticonBean emoticonBeanTemp = null;
 
         if (null != inStream) {
             XmlPullParser pullParser = Xml.newPullParser();
@@ -93,6 +93,7 @@ public class XmlUtil {
                                         String value = pullParser.nextText();
                                         emoticonBeanTemp.setEventType(Integer.parseInt(value));
                                     } catch (NumberFormatException e) {
+                                        Log.i("info", "xml 解析失败 =====  " + e.toString());
                                     }
                                 } else if (skeyName.equals("iconUri")) {
                                     String value = pullParser.nextText();
@@ -121,24 +122,25 @@ public class XmlUtil {
                                         emoticonPageSetEntity.setIconUri(value);
                                     } else if (skeyName.equals("isShowDelBtn")) {
                                         String value = pullParser.nextText();
-                                        EmoticonPageEntity.DelBtnStatus delBtnStatus;
+                                        EmoticonPageBean.DelBtnStatus delBtnStatus;
                                         if (!TextUtils.isEmpty(value) && Integer.parseInt(value) == 1) {
-                                            delBtnStatus = EmoticonPageEntity.DelBtnStatus.FOLLOW;
+                                            delBtnStatus = EmoticonPageBean.DelBtnStatus.FOLLOW;
                                         } else if (!TextUtils.isEmpty(value) && Integer.parseInt(value) == 2) {
-                                            delBtnStatus = EmoticonPageEntity.DelBtnStatus.LAST;
+                                            delBtnStatus = EmoticonPageBean.DelBtnStatus.LAST;
                                         } else {
-                                            delBtnStatus = EmoticonPageEntity.DelBtnStatus.GONE;
+                                            delBtnStatus = EmoticonPageBean.DelBtnStatus.GONE;
                                         }
                                         emoticonPageSetEntity.setShowDelBtn(delBtnStatus);
                                     }
                                 } catch (NumberFormatException e) {
+                                    Log.i("info", "xml 解析失败 =====  " + e.toString());
                                     e.printStackTrace();
                                 }
                             }
 
                             if (skeyName.equals(arrayParentKey)) {
                                 isChildCheck = true;
-                                emoticonBeanTemp = new EmoticonEntity();
+                                emoticonBeanTemp = new EmoticonBean();
                             }
                             break;
                         case XmlPullParser.END_TAG:
