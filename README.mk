@@ -6,15 +6,13 @@
 </p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当然说这句话是有前提的，前提就是你还未从一个代码学习者转变为一个代码创造者。然而 很不辛，博主就是一个这样的开发者。这是博主在写这篇文章时的感悟。哎，说多了都是泪呀，</font>
 </p>
 </p>
-
+	
 	多说无益，还是谈下我们今天的项目：今天要写的博客其实是一个关于聊天界面输入表情的一篇博客。最近公司因为要用到聊天功能，博主稍微进行了一下研究。搞定公司项目后，自己写了一个关于表情的库。说实话网上有关的库简直时太多了。
-
+	
 
 ####<font color="#0f099">二，献上效果图：</font>
 
-![这里写图片描述](https://raw.githubusercontent.com/zqHero/SessionChattingLibDemo/master/img/1.gif)
-
-![这里写图片描述](https://raw.githubusercontent.com/zqHero/SessionChattingLibDemo/master/img/2.gif)
+![这里写图片描述](http://img.blog.csdn.net/20171124181717099?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzIzMzA5Nw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)   ![这里写图片描述](http://img.blog.csdn.net/20171124181859503?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzIzMzA5Nw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 ####<font color="#0f099">三，代码介绍：</font>
 
 	说实话 网上的这种库简直时太多，本人也是在网上找了很多代码，最后在找到感觉还不错的几个库。改了改源码。相比原来的库更加简单优化。如果有童鞋对此有兴趣，可以继续往下看，否则请忽略。
@@ -116,8 +114,7 @@
 
 表情图片以及表情符号，都是一些资源文件：博主对他们进行了压缩。减少了包的大小。
 
-![这里写图片描述](https://raw.githubusercontent.com/zqHero/SessionChattingLibDemo/master/img/3.gif)
-
+![这里写图片描述](http://img.blog.csdn.net/20171124181659368?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzIzMzA5Nw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 博主的表情包相对较多。当然如果对你无用你可以直接找到工具类EmotionsPageManager注释如下代码即可：
 
@@ -173,6 +170,3 @@
 <font color="#f00">当然如果对你有用希望动动你的小手fork 或者关注博主一下。下面奉上代码源地址：</font>
 
 https://github.com/zqHero/SessionChattingLibDemo
-
-
-
