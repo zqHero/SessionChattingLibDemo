@@ -7,7 +7,7 @@
 </p>
 </p>
 	
-	多说无益，还是谈下我们今天的项目：今天要写的博客其实是一个关于聊天界面输入表情的一篇博客。最近公司因为要用到聊天功能，博主稍微进行了一下研究。搞定公司项目后，自己写了一个关于表情的库。说实话网上有关的库简直时太多了。
+多说无益，还是谈下我们今天的项目：今天要写的博客其实是一个关于聊天界面输入表情的一篇博客。最近公司因为要用到聊天功能，博主稍微进行了一下研究。搞定公司项目后，自己写了一个关于表情的库。说实话网上有关的库简直时太多了。
 	
 
 ####<font color="#0f099">二，献上效果图：</font>
@@ -15,7 +15,7 @@
 ![这里写图片描述](http://img.blog.csdn.net/20171124181717099?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzIzMzA5Nw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)   ![这里写图片描述](http://img.blog.csdn.net/20171124181859503?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzIzMzA5Nw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 ####<font color="#0f099">三，代码介绍：</font>
 
-	说实话 网上的这种库简直时太多，本人也是在网上找了很多代码，最后在找到感觉还不错的几个库。改了改源码。相比原来的库更加简单优化。如果有童鞋对此有兴趣，可以继续往下看，否则请忽略。
+说实话 网上的这种库简直时太多，本人也是在网上找了很多代码，最后在找到感觉还不错的几个库。改了改源码。相比原来的库更加简单优化。如果有童鞋对此有兴趣，可以继续往下看，否则请忽略。
 
 初始化底部  inputboard 代码：
 
@@ -171,4 +171,23 @@
 
 https://github.com/zqHero/SessionChattingLibDemo
 
-csdn:http://blog.csdn.net/u013233097/article/details/78626708
+
+
+
+//下面   介绍网上的 几个开源库    博主 也是参考了下面的库：
+// 当然如果对你有帮助  希望能fork一下喽：
+
+
+XhsEmoticonsKeyboard:
+
+https://github.com/w446108264/XhsEmoticonsKeyboard
+
+![这里写图片描述](http://img.blog.csdn.net/20171124182202954?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzIzMzA5Nw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
+![这里写图片描述](http://img.blog.csdn.net/20171124182212942?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzIzMzA5Nw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
+LQREmojiLibrary：
+
+https://github.com/GitLqr/LQREmojiLibrary
+
+![这里写图片描述](http://img.blog.csdn.net/20171124182512862?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMzIzMzA5Nw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
