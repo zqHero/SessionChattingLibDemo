@@ -27,13 +27,9 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:26.+'
+    compile 'com.android.support:appcompat-v7:' + rootProject.ext.buildToolsVersion
+    compile 'com.android.support:support-v4:' + rootProject.ext.buildToolsVersion
 
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.github.bumptech.glide:glide:3.6.1'
-
-    compile 'com.android.support:design:26+'
-    compile 'com.android.support:support-v4:26+'
-
-    compile 'com.felipecsl:gifimageview:2.1.0'
 }

@@ -20,7 +20,7 @@ import com.hero.zhaoq.emotionboardlib.utils.DimenUtils;
 public class EmoticonsInputBoardUtils {
 
     private static final String EXTRA_DEF_KEYBOARDHEIGHT = "DEF_KEYBOARDHEIGHT";
-    private static final int DEF_KEYBOARD_HEAGH_WITH_DP = 300;
+    private static final int DEF_KEYBOARD_HEAGH_WITH_DP = 200;
     private static int sDefKeyboardHeight = -1;
 
     public static int getFontHeight(TextView textView) {

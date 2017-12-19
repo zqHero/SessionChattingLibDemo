@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.hero.zhaoq.sessionlibdemo.ChattingActivity">
+
+    <include layout="@layout/title_bar_layout" />
+
+    <com.hero.zhaoq.emotionboardlib.widget.EmoticonsInputBoard
+        android:id="@+id/ek_bar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        >
+
+        <com.hero.zhaoq.sessionlib.widgets.MessageView
+            android:id="@+id/lv_chat"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:cacheColorHint="#00000000"
+            android:divider="@null"
+            android:fadingEdge="none"
+            android:fitsSystemWindows="true"
+            android:listSelector="#00000000"
+            android:scrollbarStyle="outsideOverlay"
+            android:scrollingCache="false"
+            android:smoothScrollbar="true"
+            android:transcriptMode="normal" />
+
+    </com.hero.zhaoq.emotionboardlib.widget.EmoticonsInputBoard>
+
+</LinearLayout>

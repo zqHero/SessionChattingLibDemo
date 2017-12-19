@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+
+
+    <dimen name="chating_left_and_right_space">50dp</dimen>
+
+
+    <dimen name="aurora_width_msg_avatar">45dp</dimen>
+    <dimen name="aurora_height_msg_avatar">45dp</dimen>
+
+
+
+    <dimen name="radius_photo_default">5dp</dimen>
+
+
+</resources>

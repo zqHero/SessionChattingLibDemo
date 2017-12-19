@@ -18,29 +18,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="All Emotion Demo"
+        android:text="All Emoticons activity"
         />
 
-    <Button
-        android:id="@+id/open_message_list"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="simple chatting Activity"
-        />
-
-    <Button
-        android:id="@+id/open_chat"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="simple chatting Activity"
-        />
+    <!--<Button-->
+        <!--android:id="@+id/open_chat"-->
+        <!--android:layout_marginTop="30dp"-->
+        <!--android:layout_marginLeft="30dp"-->
+        <!--android:layout_marginRight="30dp"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:text="simple chatting Activity"-->
+        <!--/>-->
 
 </LinearLayout>

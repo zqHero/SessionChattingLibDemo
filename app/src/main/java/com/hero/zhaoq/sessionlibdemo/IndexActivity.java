@@ -15,28 +15,15 @@ public class IndexActivity extends CheckPremissionActivity {
         findViewById(R.id.open_emotion).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //
                 startActivity(new Intent(IndexActivity.this, EmotionsActivity.class));
             }
         });
 
-        findViewById(R.id.open_chat).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //
-//                startActivity(new Intent(IndexActivity.this, EmotionsActivity.class));
-            }
-        });
-
-        findViewById(R.id.open_message_list).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //
-//                startActivity(new Intent(IndexActivity.this, EmotionsActivity.class));
-            }
-        });
+//        findViewById(R.id.open_chat).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(IndexActivity.this, ChattingActivity.class));
+//            }
+//        });
     }
-
-
-
 }

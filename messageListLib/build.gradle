@@ -21,5 +21,6 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:26.+'
+    compile 'com.android.support:appcompat-v7:' + rootProject.ext.buildToolsVersion
+    compile 'com.android.support:recyclerview-v7:' + rootProject.ext.buildToolsVersion
 }

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/msgitem_receive_style">
+
+    <TextView
+        android:id="@+id/aurora_tv_msgitem_date"
+        android:text="23:12"
+        style="@style/msgitem_date_style" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp">
+
+        <ImageView
+            android:id="@+id/aurora_iv_msgitem_avatar"
+            android:src="@drawable/ic_healthy_helper"
+            style="@style/msgitem_receiver_avatar_style" />
+
+        <TextView
+            android:id="@+id/aurora_tv_msgitem_receiver_display_name"
+            style="@style/msgitem_receiver_display_name_style"
+            android:layout_width="wrap_content"
+            android:text="韩梅梅"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/aurora_iv_msgitem_avatar" />
+
+        <FrameLayout
+            android:id="@+id/aurora_fl_msgitem_voice_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/aurora_tv_msgitem_receiver_display_name"
+            android:layout_toRightOf="@id/aurora_iv_msgitem_avatar"
+            android:gravity="left">
+
+            <TextView
+                android:id="@+id/aurora_tv_msgitem_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:background="@drawable/receivetxt_bubble"
+                android:maxWidth="220dp" />
+
+            <ImageView
+                android:id="@+id/aurora_iv_msgitem_voice_anim"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|left"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/anim_receive_voice" />
+
+            <TextView
+                android:id="@+id/aurora_tv_voice_length"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|right"
+                android:layout_marginRight="5dp"
+                android:text="3'"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+        </FrameLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>
